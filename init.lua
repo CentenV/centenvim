@@ -24,7 +24,8 @@ vim.o.autoindent = true
 -- Smart case sensitivity when using search
 vim.o.ignorecase = true
 vim.o.smartcase = true
--- Save undo history
+-- Persistant history
+vim.o.undofile = true
 -- TODO: ADD MORE
 
 -- [[ lazy.nvim - Plugin manager ]] --
@@ -43,6 +44,11 @@ rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
+  require("plugins.bufferline"),
 	require("plugins.catppuccin"),
   require("plugins.neotree"),
+  require("plugins.nvim-treesitter"),
+  require("plugins.snacks"),
+  require("plugins.telescope"),
+  require("plugins.which-key"),
 })
