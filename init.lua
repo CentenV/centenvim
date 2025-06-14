@@ -5,9 +5,6 @@ require("core.options")
 require("core.keymaps")
 
 -- [[ Basic Vim Housekeeping ]] --
--- Set Space to <leader>
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 -- Enable Nerd Fonts
 vim.g.have_nerd_font = false
 -- Line numbers
@@ -27,8 +24,9 @@ vim.o.autoindent = true
 -- Smart case sensitivity when using search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+-- Save undo history
+-- TODO: ADD MORE
 
--- [[]] --
 -- [[ lazy.nvim - Plugin manager ]] --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -45,21 +43,6 @@ rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
-	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
-		lazy = false, -- neo-tree will lazily load itself
-		---@module "neo-tree"
-		---@type neotree.Config?
-		opts = {
-			-- fill any relevant options here
-		},
-	},
+	require("plugins.catppuccin"),
+  require("plugins.neotree"),
 })
