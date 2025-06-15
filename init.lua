@@ -17,7 +17,7 @@ vim.o.wrap = false
 vim.o.mouse = "a"
 -- Use system clipboard
 vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
+  vim.o.clipboard = "unnamedplus"
 end)
 -- Auto indentation
 vim.o.autoindent = true
@@ -31,11 +31,11 @@ vim.o.undofile = true
 -- [[ lazy.nvim - Plugin manager ]] --
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		error("Error cloning lazy.nvim:\n" .. out)
-	end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    error("Error cloning lazy.nvim:\n" .. out)
+  end
 end
 
 ---@type vim.Option
@@ -45,8 +45,8 @@ rtp:prepend(lazypath)
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
   require("plugins.bufferline"),
-	require("plugins.catppuccin"),
-  require("plugins.neotree"),
+  require("plugins.catppuccin"),
+  require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
   require("plugins.snacks"),
   require("plugins.telescope"),
