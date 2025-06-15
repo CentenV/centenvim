@@ -54,7 +54,7 @@ rtp:prepend(lazypath)
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
   require("plugins.bufferline"),
-  require("plugins.catppuccin"),
+  -- require("plugins.catppuccin"),
   require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
   require("plugins.snacks"),

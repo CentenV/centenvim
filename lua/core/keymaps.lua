@@ -16,7 +16,7 @@ local options = {
 -- Basic Vim
 keymap.set("n", "<leader>qq", "<cmd> qa <CR>", Keymap_opt("Quit", options))
 keymap.set({ "n", "v" }, "d", '"_d', options)
-keymap.set({ "v" }, "s", '"_s', options)
+keymap.set("v", "s", '"_s', options)
 
 -- Buffer Management
 -- list of buffers
@@ -25,7 +25,7 @@ keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", Keymap_opt("Previous Bu
 keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", Keymap_opt("Next Buffer", options))
 -- close
 keymap.set("n", "<leader>bd", function()
-  Snacks.bufdelete()
+  require("snacks").bufdelete()
 end, Keymap_opt("Close Buffer", options))
 -- reorder
 keymap.set("n", "<leader>b<Left>", "<cmd>BufferLineMovePrev<CR>", Keymap_opt("Move Buffer Left", options))
@@ -53,13 +53,28 @@ local file_explorer_position = "right"
 keymap.set(
   { "n", "v" },
   "<leader>e",
-  string.format("<cmd> Neotree filesystem toggle %s <CR>", file_explorer_position),
+  -- string.format("<cmd> Neotree filesystem toggle %s <CR>", file_explorer_position),
+  function()
+    require("snacks").picker.explorer()
+  end,
   Keymap_opt("File Explorer", options)
 )
 
 -- Search
-keymap.set("n", "<leader><leader>", "<cmd> Telescope find_files <CR>", Keymap_opt("Open File", options))
-keymap.set("n", "<leader>/", "<cmd> Telescope live_grep <CR>", Keymap_opt("Search", options))
+keymap.set("n", "<leader><leader>", function()
+  require("snacks").picker.files({
+    hidden = true,
+    ignored = true,
+  })
+end, Keymap_opt("Open File", options))
+keymap.set("n", "<leader>/", function()
+  require("snacks").picker.grep()
+end, Keymap_opt("Grep in Files", options))
+
+-- Git
+keymap.set("n", "<leader>fgd", function()
+  require("snacks").picker.git_diff()
+end, Keymap_opt("Git Diff", options))
 
 -- Lazy
 keymap.set("", "<leader>l", "<cmd> Lazy <CR>", Keymap_opt("Lazy", options))
