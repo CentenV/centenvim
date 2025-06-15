@@ -4,6 +4,14 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
-    flavour = "latte",
+    flavour = "mocha",
+    color_overrides = {
+      mocha = {
+        base = "#000000",
+        mantle = "#212124",
+        -- crust = "#000000",
+        crust = "#FFFFFF",
+      },
+    },
   },
 }

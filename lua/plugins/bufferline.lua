@@ -10,6 +10,7 @@ return {
       },
       separator_style = "thin",
       hover = {
+
       }
     },
   },

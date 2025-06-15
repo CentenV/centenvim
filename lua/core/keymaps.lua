@@ -43,17 +43,17 @@ keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>", { desc = "Decrease Window Heig
 keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease Window Width" })
 keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase Window Width" })
 -- open
-keymap.set("n", "<leader>h", "<C-W>s", { desc = "Split Window Horizontally, Below" })
-keymap.set("n", "<leader>v", "<C-W>v", { desc = "Split Window Vertically, Right" })
+keymap.set("n", "<leader>h", "<C-w>s", { desc = "Split Window Horizontally" })
+keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split Window Vertically" })
 -- close
--- keymap.set("n", "<leader>wd", "<cmd>", Keymap_opt("Close Window", options))
+keymap.set("n", "<leader>wd", "<C-w>q", Keymap_opt("Close Window", options))
+keymap.set("n", "<leader>w=", "<C-w>=", Keymap_opt("Reset Window(s)", options))
 
 -- File explorer
-local file_explorer_position = "right"
 keymap.set(
   { "n", "v" },
   "<leader>e",
-  -- string.format("<cmd> Neotree filesystem toggle %s <CR>", file_explorer_position),
+  -- "<cmd> Neotree filesystem toggle right <CR>"
   function()
     require("snacks").picker.explorer()
   end,
@@ -61,20 +61,36 @@ keymap.set(
 )
 
 -- Search
+-- files
 keymap.set("n", "<leader><leader>", function()
   require("snacks").picker.files({
     hidden = true,
     ignored = true,
   })
 end, Keymap_opt("Open File", options))
+-- grep
 keymap.set("n", "<leader>/", function()
   require("snacks").picker.grep()
 end, Keymap_opt("Grep in Files", options))
+-- keybinds
+keymap.set("n", "<leader>sk", function()
+  require("snacks").picker.keymaps()
+end, Keymap_opt("Keymaps", options))
 
 -- Git
 keymap.set("n", "<leader>fgd", function()
   require("snacks").picker.git_diff()
 end, Keymap_opt("Git Diff", options))
 
+-- UI
+-- theme management
+keymap.set("n", "<leader>ut", "<cmd> Telescope colorscheme <CR>", Keymap_opt("Theme", options))
+
 -- Lazy
-keymap.set("", "<leader>l", "<cmd> Lazy <CR>", Keymap_opt("Lazy", options))
+keymap.set("n", "<leader>l", "<cmd> Lazy <CR>", Keymap_opt("Lazy", options))
+
+-- Coding
+-- commenting
+keymap.set("n", "<C-c>", "gcc", options)
+keymap.set("v", "<C-c>", "gc", options)
+

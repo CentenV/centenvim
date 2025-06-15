@@ -1,8 +1,13 @@
 ----- [[ CentenVim ]] -----
 
 -- CentenV's custom Neovim configuration
-require("core.options")
 require("core.keymaps")
+require("core.options")
+
+-- !!!
+-- This file contains configurations that are backbone to the customization of Neovim.
+-- Parameters that potentially/are subject to be changed are stored in core.options
+-- !!!
 
 -- [[ Basic Vim Housekeeping ]] --
 -- Enable Nerd Fonts
@@ -54,9 +59,14 @@ rtp:prepend(lazypath)
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
   require("plugins.bufferline"),
-  -- require("plugins.catppuccin"),
-  require("plugins.nvim-tree"),
+  require("plugins.catppuccin"),
+  -- require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
   require("plugins.snacks"),
+  require("plugins.telescope"),
   require("plugins.which-key"),
 })
+
+-- Default theme after everything has been loaded
+vim.cmd("colorscheme catppuccin")
+
