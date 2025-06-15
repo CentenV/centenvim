@@ -21,11 +21,20 @@ vim.schedule(function()
 end)
 -- Auto indentation
 vim.o.autoindent = true
+-- Tabs
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.expandtab = true
 -- Smart case sensitivity when using search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 -- Persistant history
 vim.o.undofile = true
+-- Autosave? TODO: wtf is this
+vim.o.autowriteall = true
+-- Disable ~ in empty lines
+vim.opt.fillchars = { eob = " " }
 -- TODO: ADD MORE
 
 -- [[ lazy.nvim - Plugin manager ]] --
@@ -49,6 +58,5 @@ require("lazy").setup({
   require("plugins.nvim-tree"),
   require("plugins.nvim-treesitter"),
   require("plugins.snacks"),
-  require("plugins.telescope"),
   require("plugins.which-key"),
 })

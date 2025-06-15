@@ -9,6 +9,8 @@ return {
         style = "underline"
       },
       separator_style = "thin",
+      hover = {
+      }
     },
   },
 }
