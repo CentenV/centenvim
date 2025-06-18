@@ -11,7 +11,7 @@ return {
       cancel_deferred_save = { "InsertEnter" },
       write_all_buffers = false,
       noautocmd = false,
-      debounce_delay = 0,
+      debounce_delay = 100,
     },
   },
 }
