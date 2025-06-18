@@ -58,10 +58,14 @@ rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require("lazy").setup({
+  require("plugins.auto-save"),
+  require("plugins.blink-cmp"),
   require("plugins.bufferline"),
   require("plugins.catppuccin"),
   -- require("plugins.nvim-tree"),
+  require("plugins.nvim-lspconfig"),
   require("plugins.nvim-treesitter"),
+  require("plugins.mason"),
   require("plugins.snacks"),
   require("plugins.telescope"),
   require("plugins.which-key"),

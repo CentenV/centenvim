@@ -87,7 +87,10 @@ end, Keymap_opt("Git Diff", options))
 keymap.set("n", "<leader>ut", "<cmd> Telescope colorscheme <CR>", Keymap_opt("Theme", options))
 
 -- Lazy
-keymap.set("n", "<leader>l", "<cmd> Lazy <CR>", Keymap_opt("Lazy", options))
+keymap.set("n", "<leader>la", "<cmd> Lazy <CR>", Keymap_opt("Lazy", options))
+
+-- LSPs
+keymap.set("n", "<leader>ma", "<cmd> Mason <CR>", Keymap_opt("Mason", options))
 
 -- Coding
 -- commenting
