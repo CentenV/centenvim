@@ -91,7 +91,7 @@ keymap.set("n", "<leader>la", "<cmd> Lazy <CR>", Keymap_opt("Lazy", options))
 
 -- LSPs
 keymap.set("n", "<leader>ma", "<cmd> Mason <CR>", Keymap_opt("Mason", options))
--- keymap.set("i", "<C-Space>", "<C-x><C-o>", Keymap_opt("Omnicomplete", options))
+keymap.set("n", "<C-Space>", vim.lsp.buf.hover, options)
 
 -- Coding
 -- commenting

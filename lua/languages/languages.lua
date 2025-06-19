@@ -1,3 +1,0 @@
-return {
-  require("languages.lazydev")
-}

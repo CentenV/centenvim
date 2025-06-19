@@ -5,9 +5,12 @@ return {
     -- Mason must be loaded before its dependents so we need to set it up here.
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
     { "mason-org/mason-lspconfig.nvim" },
-    require("languages.languages")
+    require("languages.lazydev")
   },
   config = function()
-    require("lspconfig").lua_ls.setup { capabilities = require("blink.cmp").get_lsp_capabilities() }
+    local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
+
+    require("lspconfig").lua_ls.setup { capabilities = blink_capabilities }
+    require("lspconfig").pylsp.setup { capabilities = blink_capabilities }
   end,
 }
