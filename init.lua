@@ -75,4 +75,6 @@ require("lazy").setup({
 
 -- Default theme after everything has been loaded
 vim.cmd("colorscheme catppuccin")
+-- Load Lualine config
+require("core.statusline")
 

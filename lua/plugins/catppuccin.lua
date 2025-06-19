@@ -9,8 +9,7 @@ return {
       mocha = {
         base = "#000000",
         mantle = "#212124",
-        -- crust = "#000000",
-        crust = "#FFFFFF",
+        crust = "#606060",
       },
     },
   },

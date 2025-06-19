@@ -4,6 +4,6 @@
 -- @param description string
 -- @param options vim.keybind.set.opt
 -- @return vim.keybind.set.opt
-function Keymap_opt(description, options)
+function keymap_opt(description, options)
 	return vim.tbl_extend("force", options, { desc = description })
 end

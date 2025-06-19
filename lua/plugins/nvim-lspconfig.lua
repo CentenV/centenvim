@@ -11,6 +11,5 @@ return {
     local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
     require("lspconfig").lua_ls.setup { capabilities = blink_capabilities }
     require("lspconfig").pylsp.setup { capabilities = blink_capabilities }
-
   end,
 }
