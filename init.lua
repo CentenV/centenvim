@@ -63,6 +63,8 @@ require("lazy").setup({
   require("plugins.bufferline"),
   require("plugins.catppuccin"),
   -- require("plugins.nvim-tree"),
+  require("plugins.lualine"),
+  require("plugins.nvim-autopairs"),
   require("plugins.nvim-lspconfig"),
   require("plugins.nvim-treesitter"),
   require("plugins.mason"),
