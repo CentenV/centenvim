@@ -69,6 +69,7 @@ require("lazy").setup({
   require("plugins.mason"),
   require("plugins.snacks"),
   require("plugins.telescope"),
+  require("plugins.todo-comments"),
   require("plugins.themes.catppuccin"),
   require("plugins.themes.github-nvim-theme"),
   require("plugins.themes.nightfox"),
@@ -88,3 +89,4 @@ vim.cmd("colorscheme carbonfox")
 require("core.statusline")
 -- Centralized status line does not override until now
 vim.opt.laststatus = 3
+
