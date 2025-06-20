@@ -6,12 +6,17 @@ return {
     options = {
       mode = "buffers",
       indicator = {
-        style = "underline"
+        style = "icon",
       },
       separator_style = "thin",
+      tab_size = 24,
+      diagnostics = "nvim_lsp",
       hover = {
-
-      }
+        enabled = true,
+        delay = 100,
+        reveal = {"close"}
+      },
+      show_close_icon = false,
     },
   },
 }
