@@ -78,9 +78,13 @@ keymap.set("n", "<leader>sk", function()
 end, keymap_opt("Keymaps", options))
 
 -- Git
-keymap.set("n", "<leader>fgd", function()
-  require("snacks").picker.git_diff()
-end, keymap_opt("Git Diff", options))
+keymap.set("n", "<leader>gd", function() require("snacks").picker.git_diff() end, keymap_opt("Git Diff", options))
+keymap.set("n", "<leader>gs", function() require("snacks").picker.git_status() end, keymap_opt("Git Status", options))
+keymap.set("n", "<leader>gb", function() require("snacks").picker.git_branches() end, keymap_opt("Git Branch", options))
+keymap.set("n", "<leader>gf", function() require("snacks").picker.git_grep() end, keymap_opt("Git Find/Lookup", options))
+keymap.set("n", "<leader>gr", function() require("snacks").lazygit.log() end, keymap_opt("Git Reflog", options))
+keymap.set("n", "<leader>gl", function() require("snacks").picker.git_log() end, keymap_opt("Git Log", options))
+keymap.set("n", "<leader>gg", function() require("snacks").lazygit() end, keymap_opt("Git (Lazygit)", options))
 
 -- UI
 -- theme management
