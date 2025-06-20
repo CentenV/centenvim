@@ -1,5 +1,6 @@
 local lang_conf = {}
 
+-- Names via nvim-lspconfig
 lang_conf.ensure_installed = {
   -- LSPs
   "bashls",
@@ -24,14 +25,26 @@ lang_conf.ensure_installed = {
 
 function lang_conf.load_languages()
   local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
+  local lsp = require("lspconfig")
 
   -- Languages --
-  -- JSON
-  require("lspconfig").jsonls.setup { capabilities = blink_capabilities }
-  -- Lua
-  require("lspconfig").lua_ls.setup { capabilities = blink_capabilities }
-  -- Python
-  require("lspconfig").pyright.setup { capabilities = blink_capabilities }
+  lsp.bashls.setup { capabilities = blink_capabilities }
+  lsp.cssls.setup { capabilities = blink_capabilities }
+  lsp.css_variables.setup { capabilities = blink_capabilities }
+  lsp.docker_compose_language_service.setup { capabilities = blink_capabilities }
+  lsp.dockerls.setup { capabilities = blink_capabilities }
+  lsp.eslint.setup { capabilities = blink_capabilities }
+  lsp.gh_actions_ls.setup { capabilities = blink_capabilities }
+  lsp.jdtls.setup { capabilities = blink_capabilities }
+  lsp.jsonls.setup { capabilities = blink_capabilities }
+  lsp.lua_ls.setup { capabilities = blink_capabilities }
+  lsp.marksman.setup { capabilities = blink_capabilities }
+  lsp.pyright.setup { capabilities = blink_capabilities }
+  lsp.postgres_lsp.setup { capabilities = blink_capabilities }
+  lsp.prismals.setup { capabilities = blink_capabilities }
+  lsp.rust_analyzer.setup { capabilities = blink_capabilities }
+  lsp.tailwindcss.setup { capabilities = blink_capabilities }
+  lsp.ts_ls.setup { capabilities = blink_capabilities }
 end
 
 return lang_conf

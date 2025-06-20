@@ -1,5 +1,9 @@
 -- [[ Options ]] --
 
+-- Line numbers
+-- vim.o.number = true
+vim.o.relativenumber = true
+
 -- Background color
 vim.opt.background = "dark"
 

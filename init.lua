@@ -12,9 +12,6 @@ require("core.options")
 -- [[ Basic Vim Housekeeping ]] --
 -- Enable Nerd Fonts
 vim.g.have_nerd_font = false
--- Line numbers
--- vim.o.number = true
-vim.o.relativenumber = true
 -- Line text behavior (don't split words, disable line wrap by default)
 vim.o.linebreak = true
 vim.o.wrap = false
@@ -67,14 +64,17 @@ require("lazy").setup({
   require("plugins.nvim-lspconfig"),
   require("plugins.nvim-treesitter"),
   require("plugins.mason"),
+  require("plugins.noice"),
   require("plugins.snacks"),
   require("plugins.telescope"),
   require("plugins.todo-comments"),
+  require("plugins.trouble"),
+  require("plugins.which-key"),
+  -- Themes
   require("plugins.themes.catppuccin"),
   require("plugins.themes.github-nvim-theme"),
   require("plugins.themes.nightfox"),
   require("plugins.themes.onedark"),
-  require("plugins.which-key"),
 })
 
 -- Load all language configurations

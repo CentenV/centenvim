@@ -104,7 +104,17 @@ keymap.set("n", "gr", vim.lsp.buf.references, keymap_opt("Go to References", opt
 keymap.set({"n", "i"}, "<F2>", vim.lsp.buf.rename, keymap_opt("Rename", options))
 
 -- Coding
--- commenting
-keymap.set("n", "<C-c>", "gcc", options)
-keymap.set("v", "<C-c>", "gc", options)
+-- command palette
+keymap.set("n", "<leader>P", function() require("snacks").picker.commands() end, keymap_opt("Command Palette", options))
+-- keymap.set("n", "<leader>")
+-- line numbers
+keymap.set("n", "<leader>ul", function()
+  if vim.o.relativenumber then
+    vim.o.number = true
+    vim.o.relativenumber = false
+  else
+    vim.o.number = false
+    vim.o.relativenumber = true
+  end
+end, keymap_opt("Toggle Line Number Mode", options))
 
