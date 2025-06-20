@@ -2,8 +2,24 @@ local lang_conf = {}
 
 lang_conf.ensure_installed = {
   -- LSPs
+  "bashls",
+  "cssls",
+  "css_variables",
+  "docker_compose_language_service",
+  "dockerls",
+  "eslint",
+  "gh_actions_ls",
+  "gitlab_ci_ls",
+  "jdtls",
+  "jsonls",
   "lua_ls",
+  "marksman",
   "pyright",
+  "postgres_lsp",
+  "prismals",
+  "rust_analyzer",
+  "tailwindcss",
+  "ts_ls",
 }
 
 function lang_conf.load_languages()
