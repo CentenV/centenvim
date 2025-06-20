@@ -86,4 +86,5 @@ require("mason-lspconfig").setup {
 vim.cmd("colorscheme carbonfox")
 -- Load Lualine config
 require("core.statusline")
-
+-- Centralized status line does not override until now
+vim.opt.laststatus = 3
