@@ -20,7 +20,13 @@ return {
     picker = {
       enabled = true,
       sources = {
+        files = {
+          hidden = true,
+          ignored = true,
+        },
         explorer = {
+          hidden = true,
+          ignored = true,
           layout = {
             preset = "sidebar",
             preview = false,
