@@ -76,7 +76,13 @@ require("lazy").setup({
   require("plugins.which-key"),
 })
 
--- Default theme after everything has been loaded
+-- Load all language configurations
+require("languages").load_languages()
+require("mason-lspconfig").setup {
+  automatic_enable = {},
+  ensure_installed = require("languages").ensure_installed
+}
+-- Load default theme
 vim.cmd("colorscheme carbonfox")
 -- Load Lualine config
 require("core.statusline")
