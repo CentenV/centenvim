@@ -6,11 +6,11 @@ return {
   opts = {
     flavour = "mocha",
     color_overrides = {
-      mocha = {
-        base = "#000000",
-        mantle = "#212124",
-        crust = "#606060",
-      },
+      -- mocha = {
+      --   base = "#000000",
+      --   mantle = "#212124",
+      --   crust = "#606060",
+      -- },
     },
   },
 }

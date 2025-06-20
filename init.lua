@@ -61,7 +61,6 @@ require("lazy").setup({
   require("plugins.auto-save"),
   require("plugins.blink-cmp"),
   require("plugins.bufferline"),
-  require("plugins.catppuccin"),
   -- require("plugins.nvim-tree"),
   require("plugins.lualine"),
   require("plugins.nvim-autopairs"),
@@ -70,11 +69,15 @@ require("lazy").setup({
   require("plugins.mason"),
   require("plugins.snacks"),
   require("plugins.telescope"),
+  require("plugins.themes.catppuccin"),
+  require("plugins.themes.github-nvim-theme"),
+  require("plugins.themes.nightfox"),
+  require("plugins.themes.onedark"),
   require("plugins.which-key"),
 })
 
 -- Default theme after everything has been loaded
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme carbonfox")
 -- Load Lualine config
 require("core.statusline")
 
