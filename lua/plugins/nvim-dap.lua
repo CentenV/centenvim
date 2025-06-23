@@ -15,10 +15,12 @@ return {
           }
         }
       },
-    }
+    },
+    -- Load language specific adapters
+    require("languages").dap_lang_plugins,
   },
   config = function()
-    -- DAP/DAP-UI
+    -- DAP/DAP UI configuration
     local dap, dapui = require("dap"), require("dapui")
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -32,7 +34,7 @@ return {
     dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
     end
-    -- Virtual text, variable definitions
+
     require("nvim-dap-virtual-text").setup()
   end,
 }

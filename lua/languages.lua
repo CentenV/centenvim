@@ -1,9 +1,9 @@
 -- [[ Language Components ]] --
 -- Names via nvim-lspconfig
-local lang_conf = {}
+local M = {}
 
--- LSPs
-lang_conf.ensure_installed_lsp = {
+-- LSPs --
+M.ensure_installed_lsp = {
   "bashls",
   "cssls",
   "css_variables",
@@ -24,21 +24,12 @@ lang_conf.ensure_installed_lsp = {
   "ts_ls",
 }
 
--- DAPs
-lang_conf.ensure_installed_dap = {
-  "codelldb",
-  "cppdbg",
-  "javadbg",
-  "python",
-}
-
-function lang_conf.load_languages()
+function M.load_languages()
   local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
   local lsp = require("lspconfig")
   local dapui = require("dapui")
   dapui.setup()
 
-  -- LSPs
   lsp.bashls.setup { capabilities = blink_capabilities }
   lsp.cssls.setup { capabilities = blink_capabilities }
   lsp.css_variables.setup { capabilities = blink_capabilities }
@@ -56,9 +47,23 @@ function lang_conf.load_languages()
   lsp.rust_analyzer.setup { capabilities = blink_capabilities }
   lsp.tailwindcss.setup { capabilities = blink_capabilities }
   lsp.ts_ls.setup { capabilities = blink_capabilities }
-
-  -- DAPs
-  require("core.debug")
 end
 
-return lang_conf
+
+-- DAPs --
+M.ensure_installed_dap = {
+  "codelldb",
+  "cppdbg",
+  "javadbg",
+  "python",
+}
+
+M.dap_lang_plugins = {
+  { "mfussenegger/nvim-dap-python" },
+}
+
+function M.load_dap_configs()
+  require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
+end
+
+return M

@@ -108,7 +108,11 @@ keymap.set({"n", "i"}, "<F2>", vim.lsp.buf.rename, keymap_opt("Rename", options)
 -- DAPs + Debugging
 keymap.set("n", "<F5>", require("dap").continue, keymap_opt("Debug - Start Debugging/Continue", options))
 keymap.set("n", "<S-F5>", require("dap").stop, keymap_opt("Debug - Stop", options))
+keymap.set("n", "<F6>", require("dap").step_back, keymap_opt("Debug - Step Back", options))
 keymap.set({"n", "i"}, "<F9>", require("dap").toggle_breakpoint, keymap_opt("Debug - Toggle Breakpoint", options))
+keymap.set("n", "<F10>", require("dap").step_over, keymap_opt("Debug - Step Over", options))
+keymap.set("n", "<F11>", require("dap").step_into, keymap_opt("Debug - Step Into", options))
+keymap.set("n", "<S-F11>", require("dap").step_out, keymap_opt("Debug - Step Out", options))
 keymap.set("n", "<leader>ud", require("dapui").toggle, keymap_opt("Toggle debug view", options))
 
 -- Coding

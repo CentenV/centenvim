@@ -80,15 +80,16 @@ require("core.keymaps")
 require("core.options")
 
 -- Load all language configurations
-require("languages").load_languages()
 require("mason-lspconfig").setup({
   ensure_installed = require("languages").ensure_installed_lsp,
   automatic_enable = true,
 })
+require("languages").load_languages()
 require("mason-nvim-dap").setup({
   ensure_installed = require("languages").ensure_installed_dap,
   automatic_installation = true,
 })
+require("languages").load_dap_configs()
 -- Load default theme
 vim.cmd("colorscheme carbonfox")
 -- Load Lualine config
