@@ -1,8 +1,5 @@
 ----- [[ CentenVim ]] -----
-
 -- CentenV's custom Neovim configuration
-require("core.keymaps")
-require("core.options")
 
 -- !!!
 -- This file contains configurations that are backbone to the customization of Neovim.
@@ -61,6 +58,7 @@ require("lazy").setup({
   -- require("plugins.nvim-tree"),
   require("plugins.lualine"),
   require("plugins.nvim-autopairs"),
+  require("plugins.nvim-dap"),
   require("plugins.nvim-lspconfig"),
   require("plugins.nvim-treesitter"),
   require("plugins.mason"),
@@ -77,12 +75,20 @@ require("lazy").setup({
   require("plugins.themes.onedark"),
 })
 
+-- Load custom configurations
+require("core.keymaps")
+require("core.options")
+
 -- Load all language configurations
 require("languages").load_languages()
-require("mason-lspconfig").setup {
-  automatic_enable = {},
-  ensure_installed = require("languages").ensure_installed
-}
+require("mason-lspconfig").setup({
+  ensure_installed = require("languages").ensure_installed_lsp,
+  automatic_enable = true,
+})
+require("mason-nvim-dap").setup({
+  ensure_installed = require("languages").ensure_installed_dap,
+  automatic_installation = true,
+})
 -- Load default theme
 vim.cmd("colorscheme carbonfox")
 -- Load Lualine config

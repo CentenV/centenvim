@@ -1,8 +1,9 @@
+-- [[ Language Components ]] --
+-- Names via nvim-lspconfig
 local lang_conf = {}
 
--- Names via nvim-lspconfig
-lang_conf.ensure_installed = {
-  -- LSPs
+-- LSPs
+lang_conf.ensure_installed_lsp = {
   "bashls",
   "cssls",
   "css_variables",
@@ -23,11 +24,21 @@ lang_conf.ensure_installed = {
   "ts_ls",
 }
 
+-- DAPs
+lang_conf.ensure_installed_dap = {
+  "codelldb",
+  "cppdbg",
+  "javadbg",
+  "python",
+}
+
 function lang_conf.load_languages()
   local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
   local lsp = require("lspconfig")
+  local dapui = require("dapui")
+  dapui.setup()
 
-  -- Languages --
+  -- LSPs
   lsp.bashls.setup { capabilities = blink_capabilities }
   lsp.cssls.setup { capabilities = blink_capabilities }
   lsp.css_variables.setup { capabilities = blink_capabilities }
@@ -45,6 +56,9 @@ function lang_conf.load_languages()
   lsp.rust_analyzer.setup { capabilities = blink_capabilities }
   lsp.tailwindcss.setup { capabilities = blink_capabilities }
   lsp.ts_ls.setup { capabilities = blink_capabilities }
+
+  -- DAPs
+  require("core.debug")
 end
 
 return lang_conf

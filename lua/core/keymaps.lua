@@ -89,6 +89,8 @@ keymap.set("n", "<leader>gg", function() require("snacks").lazygit() end, keymap
 -- UI
 -- theme management
 keymap.set("n", "<leader>ut", "<cmd> Telescope colorscheme <CR>", keymap_opt("Theme", options))
+-- notification history
+keymap.set("n", "<leader>me", "<cmd> Noice history <CR>", keymap_opt("Notification history", options))
 
 -- Lazy
 keymap.set("n", "<leader>la", "<cmd> Lazy <CR>", keymap_opt("Lazy", options))
@@ -102,6 +104,12 @@ keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opt("Go to Definition", opt
 keymap.set("n", "gr", vim.lsp.buf.references, keymap_opt("Go to References", options))
 -- refactor/rename
 keymap.set({"n", "i"}, "<F2>", vim.lsp.buf.rename, keymap_opt("Rename", options))
+
+-- DAPs + Debugging
+keymap.set("n", "<F5>", require("dap").continue, keymap_opt("Debug - Start Debugging/Continue", options))
+keymap.set("n", "<S-F5>", require("dap").stop, keymap_opt("Debug - Stop", options))
+keymap.set({"n", "i"}, "<F9>", require("dap").toggle_breakpoint, keymap_opt("Debug - Toggle Breakpoint", options))
+keymap.set("n", "<leader>ud", require("dapui").toggle, keymap_opt("Toggle debug view", options))
 
 -- Coding
 -- command palette
