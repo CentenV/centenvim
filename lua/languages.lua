@@ -22,6 +22,7 @@ M.ensure_installed_lsp = {
   "rust_analyzer",
   "tailwindcss",
   "ts_ls",
+  "yamlls"
 }
 
 function M.load_languages()
@@ -47,6 +48,7 @@ function M.load_languages()
   lsp.rust_analyzer.setup { capabilities = blink_capabilities }
   lsp.tailwindcss.setup { capabilities = blink_capabilities }
   lsp.ts_ls.setup { capabilities = blink_capabilities }
+  lsp.yamlls.setup { capabilities = blink_capabilities }
 end
 
 
