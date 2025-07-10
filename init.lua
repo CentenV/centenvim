@@ -56,12 +56,14 @@ require("lazy").setup({
   require("plugins.blink-cmp"),
   require("plugins.bufferline"),
   -- require("plugins.nvim-tree"),
+  require("plugins.gitsigns"),
   require("plugins.lualine"),
   require("plugins.nvim-autopairs"),
   require("plugins.nvim-dap"),
   require("plugins.nvim-lspconfig"),
   require("plugins.nvim-treesitter"),
   require("plugins.mason"),
+  require("plugins.mini-icons"),
   require("plugins.noice"),
   require("plugins.snacks"),
   require("plugins.telescope"),
@@ -73,6 +75,7 @@ require("lazy").setup({
   require("plugins.themes.github-nvim-theme"),
   require("plugins.themes.nightfox"),
   require("plugins.themes.onedark"),
+  require("plugins.themes.onedarkpro"),
 })
 
 -- Load custom configurations
@@ -91,7 +94,7 @@ require("mason-nvim-dap").setup({
 })
 require("languages").load_dap_configs()
 -- Load default theme
-vim.cmd("colorscheme carbonfox")
+vim.cmd("colorscheme onedark_dark")
 -- Load Lualine config
 require("core.statusline")
 -- Centralized status line does not override until now
