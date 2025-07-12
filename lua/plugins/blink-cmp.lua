@@ -19,7 +19,18 @@ return {
     appearance = {
       nerd_font_variant = 'mono'
     },
-    completion = { documentation = { auto_show = true } },
+    completion = {
+      menu = {
+        border = "rounded",
+        winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+      },
+      documentation = {
+        auto_show = true,
+        window = {
+          border = "rounded"
+        }
+      }
+    },
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
