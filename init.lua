@@ -1,12 +1,82 @@
 ----- [[ CentenVim ]] -----
 -- CentenV's custom Neovim configuration
 
--- !!!
+
+-- WARNING: !!!
 -- This file contains configurations that are backbone to the customization of Neovim.
 -- Parameters that potentially/are subject to be changed are stored in core.options
--- !!!
+-- WARNING: !!!
+
+
+-- [[ Plugin manager - lazy.nvim ]] --
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Plugins
+require("lazy").setup({
+  require("plugins.auto-save"),
+  require("plugins.blink-cmp"),
+  require("plugins.bufferline"),
+  require("plugins.git-conflict"),
+  -- require("plugins.nvim-tree"),
+  require("plugins.gitsigns"),
+  require("plugins.lualine"),
+  require("plugins.mason-tool-installer"),
+  require("plugins.nvim-autopairs"),
+  require("plugins.nvim-dap"),
+  require("plugins.nvim-lint"),
+  require("plugins.nvim-lspconfig"),
+  require("plugins.nvim-treesitter"),
+  require("plugins.mason"),
+  require("plugins.mini-icons"),
+  require("plugins.noice"),
+  require("plugins.snacks"),
+  require("plugins.telescope"),
+  require("plugins.todo-comments"),
+  require("plugins.trouble"),
+  require("plugins.which-key"),
+  -- Themes
+  require("plugins.themes.catppuccin"),
+  require("plugins.themes.github-nvim-theme"),
+  require("plugins.themes.nightfox"),
+  require("plugins.themes.onedark"),
+  require("plugins.themes.onedarkpro"),
+})
+
+
+-- [[ Language Configurations ]] --
+-- Ensure all LSPs, DAPs, Linters, Formatters are installed
+require("mason-tool-installer").setup {
+  ensure_installed = require("languages").ensure_installed
+}
+-- Load all language configurations
+require("languages").load_languages()
+require("languages").load_dap_configs()
+require("languages").load_linters()
+
+
+-- [[ UI Defaults ]] --
+-- Load default theme
+vim.cmd("colorscheme onedark_dark")
+-- Load Lualine config
+require("core.statusline")
+
 
 -- [[ Basic Vim Housekeeping ]] --
+-- WARNING: As mentioned at the beginning, these are not to be usually tweaked. That is reserved for the core.options file
 -- Enable Nerd Fonts
 vim.g.have_nerd_font = false
 -- Line text behavior (don't split words, disable line wrap by default)
@@ -34,69 +104,10 @@ vim.o.undofile = true
 vim.o.autowriteall = true
 -- Disable ~ in empty lines
 vim.opt.fillchars = { eob = " " }
+-- Centralizred statusline
+vim.opt.laststatus = 3
 -- TODO: ADD MORE
 
--- [[ lazy.nvim - Plugin manager ]] --
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    error("Error cloning lazy.nvim:\n" .. out)
-  end
-end
-
----@type vim.Option
-local rtp = vim.opt.rtp
-rtp:prepend(lazypath)
-
--- [[ Configure and install plugins ]]
-require("lazy").setup({
-  require("plugins.auto-save"),
-  require("plugins.blink-cmp"),
-  require("plugins.bufferline"),
-  -- require("plugins.nvim-tree"),
-  require("plugins.gitsigns"),
-  require("plugins.lualine"),
-  require("plugins.nvim-autopairs"),
-  require("plugins.nvim-dap"),
-  require("plugins.nvim-lspconfig"),
-  require("plugins.nvim-treesitter"),
-  require("plugins.mason"),
-  require("plugins.mini-icons"),
-  require("plugins.noice"),
-  require("plugins.snacks"),
-  require("plugins.telescope"),
-  require("plugins.todo-comments"),
-  require("plugins.trouble"),
-  require("plugins.which-key"),
-  -- Themes
-  require("plugins.themes.catppuccin"),
-  require("plugins.themes.github-nvim-theme"),
-  require("plugins.themes.nightfox"),
-  require("plugins.themes.onedark"),
-  require("plugins.themes.onedarkpro"),
-})
-
 -- Load custom configurations
-require("core.keymaps")
 require("core.options")
-
--- Load all language configurations
-require("mason-lspconfig").setup({
-  ensure_installed = require("languages").ensure_installed_lsp,
-  automatic_enable = true,
-})
-require("languages").load_languages()
-require("mason-nvim-dap").setup({
-  ensure_installed = require("languages").ensure_installed_dap,
-  automatic_installation = true,
-})
-require("languages").load_dap_configs()
--- Load default theme
-vim.cmd("colorscheme onedark_dark")
--- Load Lualine config
-require("core.statusline")
--- Centralized status line does not override until now
-vim.opt.laststatus = 3
-
+require("core.keymaps")

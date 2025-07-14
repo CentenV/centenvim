@@ -2,8 +2,9 @@
 -- Names via nvim-lspconfig
 local M = {}
 
--- LSPs --
-M.ensure_installed_lsp = {
+-- All LSPs, DAPs, Linters, Formatters to be installed by Mason
+M.ensure_installed = {
+  -- LSPs
   "bashls",
   "cssls",
   "css_variables",
@@ -22,9 +23,16 @@ M.ensure_installed_lsp = {
   "rust_analyzer",
   "tailwindcss",
   "ts_ls",
-  "yamlls"
+  "yamlls",
+  -- DAPs (TODO: Add)
+  -- Linters
+  "biome",
+  "eslint_d"
+  -- Formatters
+  -- "prettier"
 }
 
+-- LSPs --
 function M.load_languages()
   local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
   local lsp = require("lspconfig")
@@ -36,7 +44,7 @@ function M.load_languages()
   lsp.css_variables.setup { capabilities = blink_capabilities }
   lsp.docker_compose_language_service.setup { capabilities = blink_capabilities }
   lsp.dockerls.setup { capabilities = blink_capabilities }
-  lsp.eslint.setup { capabilities = blink_capabilities }
+  -- lsp.eslint.setup { capabilities = blink_capabilities }
   lsp.gh_actions_ls.setup { capabilities = blink_capabilities }
   lsp.jdtls.setup { capabilities = blink_capabilities }
   lsp.jsonls.setup { capabilities = blink_capabilities }
@@ -67,5 +75,31 @@ M.dap_lang_plugins = {
 function M.load_dap_configs()
   require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
 end
+
+
+-- Linters --
+function M.load_linters()
+  require("lint").linters_by_ft = {
+    javascript = { "eslint_d" },
+    javascriptreact = { "eslint_d" },
+    typescript = { "eslint_d" },
+    typescriptreact = { "eslint_d" },
+  }
+end
+
+
+-- Formatters --
+function M.load_formatters()
+  require("conform").setup({
+    formatters_by_ft = {
+      -- javascript = { "prettier" },
+      -- javascriptreact = { "prettier" },
+      -- typescript = { "prettier" },
+      -- typescriptreact = { "prettier" },
+    }
+  })
+end
+
+
 
 return M

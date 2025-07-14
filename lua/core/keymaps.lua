@@ -90,7 +90,9 @@ keymap.set("n", "<leader>gg", function() require("snacks").lazygit() end, keymap
 -- theme management
 keymap.set("n", "<leader>ut", "<cmd> Telescope colorscheme <CR>", keymap_opt("Theme", options))
 -- notification history
-keymap.set("n", "<leader>me", "<cmd> Noice history <CR>", keymap_opt("Notification history", options))
+keymap.set("n", "<leader>me", "<cmd> NoiceHistory <CR>", keymap_opt("Notification history", options))
+-- disable F1 for help
+keymap.set("i", "<F1>", "", keymap_opt("Empty/Unbound", options))
 
 -- Lazy
 keymap.set("n", "<leader>la", "<cmd> Lazy <CR>", keymap_opt("Lazy", options))
@@ -112,7 +114,7 @@ keymap.set("n", "<F6>", require("dap").step_back, keymap_opt("Debug - Step Back"
 keymap.set({"n", "i"}, "<F9>", require("dap").toggle_breakpoint, keymap_opt("Debug - Toggle Breakpoint", options))
 keymap.set("n", "<F10>", require("dap").step_over, keymap_opt("Debug - Step Over", options))
 keymap.set("n", "<F11>", require("dap").step_into, keymap_opt("Debug - Step Into", options))
-keymap.set("n", "<S-F11>", require("dap").step_out, keymap_opt("Debug - Step Out", options))
+keymap.set("n", "<S-F11>", require("dap").step_out, keymap_opt("Debug - Step Into", options))
 keymap.set("n", "<leader>ud", require("dapui").toggle, keymap_opt("Toggle debug view", options))
 
 -- Coding
@@ -129,4 +131,6 @@ keymap.set("n", "<leader>ul", function()
     vim.o.relativenumber = true
   end
 end, keymap_opt("Toggle Line Number Mode", options))
-
+-- move line up/down
+keymap.set({ "n", "i" }, "<M-j>", "<cmd> m +1 <CR>", options)
+keymap.set({ "n", "i" }, "<M-k>", "<cmd> m -2 <CR>", options)
