@@ -40,6 +40,7 @@ require("lazy").setup({
   require("plugins.nvim-lint"),
   require("plugins.nvim-lspconfig"),
   require("plugins.nvim-treesitter"),
+  require("plugins.nvim-ts-autotag"),
   require("plugins.mason"),
   require("plugins.mini-icons"),
   require("plugins.noice"),
