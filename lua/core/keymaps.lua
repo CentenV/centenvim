@@ -90,14 +90,14 @@ keymap.set("n", "<leader>gg", function() require("snacks").lazygit() end, keymap
 -- theme management
 keymap.set("n", "<leader>ut", "<cmd> Telescope colorscheme <CR>", keymap_opt("Theme", options))
 -- notification history
-keymap.set("n", "<leader>me", "<cmd> NoiceHistory <CR>", keymap_opt("Notification history", options))
+keymap.set("n", "<leader>me", "<cmd> messages <CR>", keymap_opt("Notification history", options))
 -- disable F1 for help
 keymap.set("i", "<F1>", "", keymap_opt("Empty/Unbound", options))
 
 -- Lazy
 keymap.set("n", "<leader>la", "<cmd> Lazy <CR>", keymap_opt("Lazy", options))
 
--- LSPs
+-- LSPs, DAPs, Formatters, Linters
 keymap.set("n", "<leader>ma", "<cmd> Mason <CR>", keymap_opt("Mason", options))
 -- give definition info
 keymap.set("n", "<C-Space>", vim.lsp.buf.hover, options)
@@ -106,8 +106,9 @@ keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opt("Go to Definition", opt
 keymap.set("n", "gr", vim.lsp.buf.references, keymap_opt("Go to References", options))
 -- refactor/rename
 keymap.set({"n", "i"}, "<F2>", vim.lsp.buf.rename, keymap_opt("Rename", options))
-
--- DAPs + Debugging
+-- format
+keymap.set("n", "<leader>f", vim.lsp.buf.format, keymap_opt("Run Formatter on Buffer", options))
+-- debugger
 keymap.set("n", "<F5>", require("dap").continue, keymap_opt("Debug - Start Debugging/Continue", options))
 keymap.set("n", "<S-F5>", require("dap").stop, keymap_opt("Debug - Stop", options))
 keymap.set("n", "<F6>", require("dap").step_back, keymap_opt("Debug - Step Back", options))

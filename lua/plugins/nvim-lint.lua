@@ -2,7 +2,7 @@ return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    -- require("languages").load_linters()
+    require("languages").load_linters()
     vim.api.nvim_create_autocmd(
       { "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" },
       {

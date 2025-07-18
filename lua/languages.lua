@@ -6,6 +6,7 @@ local M = {}
 M.ensure_installed = {
   -- LSPs
   "bashls",
+  "biome",
   "cssls",
   "css_variables",
   "docker_compose_language_service",
@@ -38,6 +39,8 @@ function M.load_languages()
   local lsp = require("lspconfig")
   local dapui = require("dapui")
   dapui.setup()
+
+  vim.lsp.enable("biome")
 
   lsp.bashls.setup { capabilities = blink_capabilities }
   lsp.cssls.setup { capabilities = blink_capabilities }
@@ -78,12 +81,13 @@ end
 
 
 -- Linters --
+-- Reference: https://github.com/mfussenegger/nvim-lint?tab=readme-ov-file#available-linters
 function M.load_linters()
   require("lint").linters_by_ft = {
-    javascript = { "eslint_d" },
-    javascriptreact = { "eslint_d" },
-    typescript = { "eslint_d" },
-    typescriptreact = { "eslint_d" },
+    javascript = { "biomejs" },
+    javascriptreact = { "biomejs" },
+    typescript = { "biomejs" },
+    typescriptreact = { "biomejs" },
   }
 end
 
@@ -92,9 +96,9 @@ end
 function M.load_formatters()
   require("conform").setup({
     formatters_by_ft = {
-      -- javascript = { "prettier" },
+      javascript = { "prettier", "biome" },
       -- javascriptreact = { "prettier" },
-      -- typescript = { "prettier" },
+      typescript = { "prettier", "biome" },
       -- typescriptreact = { "prettier" },
     }
   })

@@ -30,6 +30,8 @@ require("lazy").setup({
   require("plugins.auto-save"),
   require("plugins.blink-cmp"),
   require("plugins.bufferline"),
+  require("plugins.conform"),
+  require("plugins.dropbar"),
   require("plugins.git-conflict"),
   -- require("plugins.nvim-tree"),
   require("plugins.gitsigns"),
@@ -61,7 +63,8 @@ require("lazy").setup({
 -- [[ Language Configurations ]] --
 -- Ensure all LSPs, DAPs, Linters, Formatters are installed
 require("mason-tool-installer").setup {
-  ensure_installed = require("languages").ensure_installed
+  ensure_installed = require("languages").ensure_installed,
+  automatic_installation = true
 }
 -- Load all language configurations
 require("languages").load_languages()
@@ -71,7 +74,7 @@ require("languages").load_linters()
 
 -- [[ UI Defaults ]] --
 -- Load default theme
-vim.cmd("colorscheme onedark_dark")
+vim.cmd("colorscheme carbonfox")
 -- Load Lualine config
 require("core.statusline")
 
