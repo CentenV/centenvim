@@ -9,7 +9,7 @@ return {
         style = "icon",
       },
       separator_style = "thin",
-      tab_size = 24,
+      tab_size = 30,
       diagnostics = "nvim_lsp",
       hover = {
         enabled = true,

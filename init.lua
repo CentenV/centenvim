@@ -50,6 +50,7 @@ require("lazy").setup({
   require("plugins.telescope"),
   require("plugins.todo-comments"),
   require("plugins.trouble"),
+  require("plugins.ts-comments"),
   require("plugins.which-key"),
   -- Themes
   require("plugins.themes.catppuccin"),
